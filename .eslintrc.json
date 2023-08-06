@@ -12,7 +12,7 @@
   "overrides": [
     {
       "files": [
-        "src/**/*.ts",
+        "**/*.ts",
         "**/*.tsx"
       ],
       "plugins": [
