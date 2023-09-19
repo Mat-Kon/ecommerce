@@ -24,14 +24,14 @@ const createAddressContainer = (): HTMLElement => {
   mallName.href = '/';
   const address = createCustomElement('div', [footerClasses.ADDRESS]);
   const addressLink = createCustomElement('a', [footerClasses.ADDRESS_LINK]) as HTMLLinkElement;
-  addressLink.href = 'https://goo.gl/maps/HnTZhtb3iDB2m6t5A';
+  addressLink.href = 'https://maps.app.goo.gl/9ETuako2vp6mbu776';
   addressLink.setAttribute('target', '_blank');
   address.setAttribute('itemscope', '');
   address.setAttribute('itemtype', 'http://schema.org/PostalAddress');
   address.append(addressLink);
-  const streetAddress = createCustomElement('span', [footerClasses.ADDRESS], '2 Stoneygate Road, Newmilns,');
+  const streetAddress = createCustomElement('span', [footerClasses.ADDRESS], '8990 Miramar Rd # 260,');
   streetAddress.setAttribute('itemprop', 'streetAddress');
-  const streetLocal = createCustomElement('span', [footerClasses.LOCAL], 'Ayrshire, United Kingdom');
+  const streetLocal = createCustomElement('span', [footerClasses.LOCAL], 'San Diego, CA 92126,');
   streetLocal.setAttribute('itemprop', 'addressLocality');
   addressLink.append(streetAddress);
   addressContainer.append(mallName, addressLink, streetLocal);
@@ -42,13 +42,11 @@ const createFooterLinksContainer = (): HTMLElement => {
   const footerLinks = createCustomElement('div', [footerClasses.FOOTER_NAV]);
   const linkHome = createCustomElement('a', [footerClasses.NAV_LINK], 'Home') as HTMLLinkElement;
   linkHome.href = '/';
-  const linkShop = createCustomElement('a', [footerClasses.NAV_LINK], 'Shop') as HTMLLinkElement;
-  linkShop.href = '/shop';
+  const linkShop = createCustomElement('a', [footerClasses.NAV_LINK], 'Catalog') as HTMLLinkElement;
+  linkShop.href = '/catalog';
   const linkAbout = createCustomElement('a', [footerClasses.NAV_LINK], 'About') as HTMLLinkElement;
   linkAbout.href = '/about';
-  const linkContact = createCustomElement('a', [footerClasses.NAV_LINK], 'Contact') as HTMLLinkElement;
-  linkContact.href = '/contact';
-  footerLinks.append(linkHome, linkShop, linkAbout, linkContact);
+  footerLinks.append(linkHome, linkShop, linkAbout);
 
   return footerLinks;
 };
