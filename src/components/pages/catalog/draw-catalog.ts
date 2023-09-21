@@ -237,10 +237,24 @@ export const drawSortCard = (product: ProductProjection, el: HTMLElement): void 
   const cardSort = createCustomElement('div', ['product__card']);
   const cartBtn = createCustomElement('div', ['cart-btn']);
   cartBtn.title = 'add to cart';
-  cartBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    const btn = event.currentTarget as HTMLButtonElement;
-    disableBtn(btn);
+  cartBtn.addEventListener('click', async (event) => {
+    const btnElem = event.target as HTMLElement;
+    if (!btnElem.classList.contains('disable')) {
+      animationProductInCart(event);
+      if (hasCart()) {
+        const id = getLocalStorage(KEY_CART) as string;
+        const { version } = await new ApiClient().getCartById(id);
+        updateCart({
+          id,
+          version,
+          productId: product.id,
+        });
+        disableBtn(btnElem as HTMLButtonElement);
+      } else {
+        await createCart(product.id);
+        disableBtn(btnElem as HTMLButtonElement);
+      }
+    }
   });
   const productKey = product.key;
   const productImg = product.masterVariant.images;
